@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+@use "./app/banner/banner-theme.component.scss" as banner;
 
 @include mat.core();
 
@@ -18,6 +19,8 @@ $light-theme: mat.define-light-theme(
 );
 
 @include mat.all-component-themes($light-theme);
+@include banner.theme($light-theme);
+
 @include mat.typography-hierarchy($light-theme);
 
 html,
