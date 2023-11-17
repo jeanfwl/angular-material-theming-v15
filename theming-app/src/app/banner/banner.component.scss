@@ -5,10 +5,11 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 15px;
-  height: 150px;
+  // height: 150px;
   flex-direction: column;
 }
-h2, p {
+h2,
+p {
   margin: 0;
 }
 .header {
@@ -17,7 +18,8 @@ h2, p {
 .content {
   flex: 1 1 65%;
 }
-.header, .content {
+.header,
+.content {
   display: flex;
   align-items: center;
   padding: 7px 15px;

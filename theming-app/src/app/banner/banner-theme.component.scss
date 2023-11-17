@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+@use "@material/density";
 
 @mixin color($color-config) {
   $primary: map-get($color-config, primary);
@@ -26,15 +27,33 @@
   }
 }
 
+@mixin density($density-scale) {
+  $density-config: (
+    height: (
+      default: 150px,
+      minimum: 130px,
+      maximum: 165px,
+    ),
+  );
+
+  .app-banner {
+    height: density.prop-value($density-config, $density-scale, height);
+  }
+}
+
 @mixin theme($theme-config) {
   // retorna o map color: ( primary, accent, ... ) do tema.
   $color-config: mat.get-color-config($theme-config);
   $typography-config: mat.get-typography-config($theme-config);
+  $density-scale: mat.get-density-config($theme-config);
 
   @if $color-config != null {
     @include color($color-config);
   }
   @if $typography-config != null {
     @include typography($typography-config);
+  }
+  @if $density-scale != null {
+    @include density($density-scale);
   }
 }
