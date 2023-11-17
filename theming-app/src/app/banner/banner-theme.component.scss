@@ -15,12 +15,26 @@
   }
 }
 
+@mixin typography($typography-config) {
+  .app-banner {
+    .header h2 {
+      @include mat.typography-level($typography-config, headline-6);
+    }
+    .content p {
+      @include mat.typography-level($typography-config, body-2);
+    }
+  }
+}
+
 @mixin theme($theme-config) {
-  $color-config: mat.get-color-config(
-    $theme-config
-  ); // retorna o map color: ( primary, accent, ... ) do tema.
+  // retorna o map color: ( primary, accent, ... ) do tema.
+  $color-config: mat.get-color-config($theme-config);
+  $typography-config: mat.get-typography-config($theme-config);
 
   @if $color-config != null {
     @include color($color-config);
+  }
+  @if $typography-config != null {
+    @include typography($typography-config);
   }
 }
