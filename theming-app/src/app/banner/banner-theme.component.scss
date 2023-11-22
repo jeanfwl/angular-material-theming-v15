@@ -1,17 +1,37 @@
 @use "@angular/material" as mat;
 @use "@material/density";
 
+@mixin _apply-banner-color($color) {
+  & {
+    @include mat.overridable-elevation(
+      4,
+      mat.get-color-from-palette($color, darker)
+    );
+  }
+  .header {
+    background-color: mat.get-color-from-palette($color, default);
+    color: mat.get-color-from-palette($color, default-contrast);
+  }
+  .content {
+    background-color: mat.get-color-from-palette($color, 50);
+    color: mat.get-color-from-palette($color, 50-contrast);
+  }
+}
+
 @mixin color($color-config) {
   $primary: map-get($color-config, primary);
+  $accent: map-get($color-config, accent);
+  $warn: map-get($color-config, warn);
 
   .app-banner {
-    .header {
-      background-color: mat.get-color-from-palette($primary, default);
-      color: mat.get-color-from-palette($primary, default-contrast);
+    &.primary-banner {
+      @include _apply-banner-color($primary);
     }
-    .content {
-      background-color: mat.get-color-from-palette($primary, 50);
-      color: mat.get-color-from-palette($primary, 50-contrast);
+    &.accent-banner {
+      @include _apply-banner-color($accent);
+    }
+    &.warn-banner {
+      @include _apply-banner-color($warn);
     }
   }
 }
