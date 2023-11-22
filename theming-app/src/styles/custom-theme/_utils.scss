@@ -1,0 +1,26 @@
+@use "@angular/material" as mat;
+@use "../../app/banner/banner-theme.component.scss" as banner;
+
+@function get-theme-config($color-config) {
+  @return (
+    color: $color-config,
+    typography: mat.define-typography-config($font-family: "Roboto"),
+    density: -1
+  );
+}
+
+@mixin create-theme-bundle($theme-config) {
+  // angular material components (just the used ones)
+  @include mat.core-theme($theme-config);
+  @include mat.card-theme($theme-config);
+  @include mat.button-theme($theme-config);
+  @include mat.form-field-theme($theme-config);
+  @include mat.select-theme($theme-config);
+  @include mat.toolbar-theme($theme-config);
+  @include mat.icon-button-theme($theme-config);
+
+  @include mat.typography-hierarchy($theme-config);
+
+  // custom component themes
+  @include banner.theme($theme-config);
+}

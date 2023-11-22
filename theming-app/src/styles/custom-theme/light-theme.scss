@@ -1,0 +1,17 @@
+@use "@angular/material" as mat;
+@use "./palettes";
+@use "./utils";
+
+$light-theme-color-config: (
+  primary: mat.define-palette(palettes.$primary-palette),
+  accent: mat.define-palette(palettes.$accent-palette),
+  warn: mat.define-palette(palettes.$warn-palette),
+);
+
+$light-theme: mat.define-light-theme(
+  (utils.get-theme-config($light-theme-color-config))
+);
+
+@mixin apply-theme() {
+  @include utils.create-theme-bundle($light-theme);
+}
