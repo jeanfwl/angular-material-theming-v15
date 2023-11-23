@@ -3,9 +3,11 @@
 
 @mixin color($color-config) {
   $background: mat.get-color-from-palette($color-config, background);
+  $foreground: mat.get-color-from-palette($color-config, foreground);
 
   app-root .content {
-    background-color: mat.get-color-from-palette($background, app-bar);
+    background-color: mat.get-color-from-palette($background, background);
+    color: mat.get-color-from-palette($foreground, text);
   }
 }
 
