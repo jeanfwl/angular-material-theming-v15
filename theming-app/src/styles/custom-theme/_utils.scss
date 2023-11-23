@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+@use "../../app/app-theme.component.scss" as app-root;
 @use "../../app/banner/banner-theme.component.scss" as banner;
 
 @function get-theme-config($color-config) {
@@ -22,5 +23,6 @@
   @include mat.typography-hierarchy($theme-config);
 
   // custom component themes
+  @include app-root.theme($theme-config);
   @include banner.theme($theme-config);
 }

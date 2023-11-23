@@ -1,0 +1,17 @@
+@use "@angular/material" as mat;
+@use "./palettes";
+@use "./utils";
+
+$dark-theme-color-config: (
+  primary: mat.define-palette(palettes.$primary-palette, 700, 300, 900),
+  accent: mat.define-palette(palettes.$accent-palette),
+  warn: mat.define-palette(palettes.$warn-palette),
+);
+
+$dark-theme: mat.define-dark-theme(
+  (utils.get-theme-config($dark-theme-color-config))
+);
+
+@mixin apply-theme() {
+  @include utils.create-theme-bundle($dark-theme);
+}
