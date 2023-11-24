@@ -12,6 +12,4 @@ $light-theme: mat.define-light-theme(
   (utils.get-theme-config($light-theme-color-config))
 );
 
-@mixin apply-theme() {
-  @include utils.create-theme-bundle($light-theme);
-}
+@include utils.create-theme-bundle($light-theme);

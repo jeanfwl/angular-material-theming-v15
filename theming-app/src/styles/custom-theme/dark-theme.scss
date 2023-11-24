@@ -12,6 +12,4 @@ $dark-theme: mat.define-dark-theme(
   (utils.get-theme-config($dark-theme-color-config))
 );
 
-@mixin apply-theme() {
-  @include utils.create-theme-bundle($dark-theme);
-}
+@include utils.create-theme-bundle($dark-theme);
