@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ThemeManagerService } from './core/theme-manager.service';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'theming-app';
+  themeManager = inject(ThemeManagerService);
+
+  changeTheme(event: MatSelectChange) {
+    this.themeManager.switchTheme(event.value);
+  }
 }
