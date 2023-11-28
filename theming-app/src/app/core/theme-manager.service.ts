@@ -31,11 +31,14 @@ export class ThemeManagerService {
   );
 
   switchTheme(theme: Themes): void {
+    localStorage.setItem('preferredTheme', theme);
     this.themeSwitcher.next(theme);
   }
 }
 
 function resolvePreferredTheme(query: MediaQueryList): Themes {
+  const theme = localStorage.getItem('preferredTheme');
+  if (theme) return theme as Themes;
   return query.matches ? 'light' : 'dark';
 }
 
