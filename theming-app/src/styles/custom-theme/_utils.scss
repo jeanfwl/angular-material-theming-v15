@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+@use "sass:map";
 @use "../../app/app-theme.component.scss" as app-root;
 @use "../../app/banner/banner-theme.component.scss" as banner;
 
@@ -7,6 +8,15 @@
     color: $color-config,
     typography: mat.define-typography-config($font-family: "Roboto"),
     density: -1
+  );
+}
+
+@function patch-color-config($theme, $color-config: ()) {
+  @return map.deep-merge(
+    $theme,
+    (
+      color: $color-config,
+    )
   );
 }
 

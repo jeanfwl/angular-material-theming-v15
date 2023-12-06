@@ -8,7 +8,7 @@ import { ThemePalette } from '@angular/material/core';
   host: { class: 'app-banner' },
 })
 export class BannerComponent {
-  @Input() type: ThemePalette = 'primary';
+  @Input() type: ThemePalette | 'success' = 'primary';
   @HostBinding('class')
   get hostClass() {
     return `${this.type}-banner`;

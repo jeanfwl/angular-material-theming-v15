@@ -22,6 +22,7 @@
   $primary: map-get($color-config, primary);
   $accent: map-get($color-config, accent);
   $warn: map-get($color-config, warn);
+  $success: map-get($color-config, success);
 
   .app-banner {
     &.primary-banner {
@@ -32,6 +33,11 @@
     }
     &.warn-banner {
       @include _apply-banner-color($warn);
+    }
+    @if $success != null {
+      &.success-banner {
+        @include _apply-banner-color($success);
+      }
     }
   }
 }

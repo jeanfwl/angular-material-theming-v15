@@ -8,8 +8,14 @@ $dark-theme-color-config: (
   warn: mat.define-palette(palettes.$warn-palette),
 );
 
+$extra-color-config: (
+  success: mat.define-palette(palettes.$success-palette),
+);
+
 $dark-theme: mat.define-dark-theme(
   (utils.get-theme-config($dark-theme-color-config))
 );
 
-@include utils.create-theme-bundle($dark-theme);
+$patched-theme: utils.patch-color-config($dark-theme, $extra-color-config);
+
+@include utils.create-theme-bundle($patched-theme);
