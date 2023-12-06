@@ -35,4 +35,16 @@
   // custom component themes
   @include app-root.theme($theme-config);
   @include banner.theme($theme-config);
+
+  .purple-sub-theme {
+    $sub-theme: patch-color-config(
+      $theme-config,
+      (
+        accent: mat.define-palette(mat.$deep-purple-palette),
+      )
+    );
+
+    @include mat.button-color($sub-theme);
+    @include banner.color($sub-theme);
+  }
 }

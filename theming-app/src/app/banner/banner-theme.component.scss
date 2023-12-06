@@ -19,6 +19,7 @@
 }
 
 @mixin color($color-config) {
+  $color-config: mat.get-color-config($color-config);
   $primary: map-get($color-config, primary);
   $accent: map-get($color-config, accent);
   $warn: map-get($color-config, warn);
